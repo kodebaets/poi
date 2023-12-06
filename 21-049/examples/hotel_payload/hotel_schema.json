@@ -1,37 +1,9 @@
 {
-	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"$id": "https://genpoijson.org/schema/publicationpoi.json",
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "https://geojson.org/schema/GeoJSON.json",
 	"description": "A draft JSON Schema for OGC POI Hotel-example.",
-	"title": "Generic POI Payload for POI Publication on Geoportal",
-	"type": "object",
-	"properties": {		
-		"onlineResources": {
-			"type": "array",
-			"items": {
-				"$ref": "#/$defs/CI_OnlineResource"
-			}
-		},
-		"locationInfo": {
-			"$ref": "#/$defs/CI_Contact"
-		},
-		"alternateName": {
-			"$ref": "#/$defs/GenericName"
-		},
-		"note": {"type": "string"},
-		"categories": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"required": [
-				],
-				"properties": {
-					"categoryType": {"type": "string"},
-					"value": {"type": "string"}
-				}
-			}
-		}
-	},
-	"$defs": {
+	"title": "PointOfInterest Payload Hotel",
+	"properties": {
 		"GenericName": {
 			"type": "object",  
 			"required": [
@@ -85,14 +57,44 @@
 			],
 			"properties": {
 				"address": {
-					"$ref": "#/$defs/CI_Address" 
+					"$ref": "#/properties/CI_Address" 
 				},
 				"contactInstructions": {"type": "string"},
 				"contactType": {"type": "string"},
 				"hoursOfService": {"type": "string"},
 				"onlineResource": {"type": "string"},
 				"phone": {
-					"$ref": "#/$defs/CI_Telephone"
+					"$ref": "#/properties/CI_Telephone"
+				}
+			}
+		},
+		"category": {
+			"type": "object",
+			"required": [
+			],
+			"properties": {
+				"categoryType": {"type": "string"},
+				"value": {"type": "string"}
+			}
+		}
+		"POI_Payload": {
+			"type": "object",
+			"id": "#PointOfInterest_Payload",
+			"required": [
+			],
+			"properties": {
+				"onlineResources": {
+					"$ref": "#/properties/CI_OnlineResource"
+				},
+				"locationInfo": {
+					"$ref": "#/properties/CI_Contact"
+				},
+				"alternateName": {
+					"$ref": "#/properties/GenericName"
+				},
+				"note": {"type": "string"},
+				"categories": {
+					"$ref": "#/properties/category"
 				}
 			}
 		}
